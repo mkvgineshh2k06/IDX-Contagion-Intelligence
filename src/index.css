@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #050816;
+}
+
+body {
+  background-color: #050816;
+  color: #F8FAFC;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-position: center center;
+  }
+  
+  .glass-panel {
+    background-color: rgba(11, 18, 36, 0.7); /* surface-panel tinted */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08); /* border-color */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+  }
+  
+  .terminal-card {
+    background-color: #0B1224; /* surface-panel */
+    border: 1px solid rgba(255,255,255,0.08); /* border-color */
+    box-shadow: 0 4px 20px -2px rgba(0,0,0,0.4);
+    border-radius: 0.375rem;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Parallax and 3D utilities */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .perspective-container {
+    perspective: 1200px;
+  }
+}
+
+/* Base Infinite Marquee implementation */
+@keyframes marquee-anim {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-infinite {
+  animation: marquee-anim 40s linear infinite;
+  will-change: transform;
+}
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
